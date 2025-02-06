@@ -5,8 +5,8 @@ import { standarInput } from '@/utils/Tokens';
 
 export default function ScreenLogin() {
   return (
-    <section className="bg-white">
-      <div className="w-full px-4 mx-auto pt-6">
+    <section className="max-w-screen-sm mx-auto w-1/2">
+      <div className="bg-slate-100 w-full mx-auto">
         <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
           <div className="rounded-t mb-0 px-6 py-6">
             <div className="text-center mb-3">
@@ -15,12 +15,12 @@ export default function ScreenLogin() {
               </h6>
             </div>
             <div className="btn-wrapper text-center">
-              {/* <button className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center hover:font-bold text-xs ease-linear transition-all duration-150" type="button" />
-                </button> */}
-              <Image width={50} height={50} alt="..." className="w-5 mr-1" src="https://demos.creative-tim.com/notus-js/assets/img/github.svg" /> Github
-              {/* <button className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center hover:font-bold text-xs ease-linear transition-all duration-150" type="button" />
-              </button> */}
-              <Image width={50} height={50} alt="..." className="w-5 mr-1" src="https://demos.creative-tim.com/notus-js/assets/img/google.svg" /> Google
+              <button className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center hover:font-bold text-xs ease-linear transition-all duration-150" type="button">
+                <Image width={50} height={50} alt="..." className="w-5 mr-1" src="https://demos.creative-tim.com/notus-js/assets/img/github.svg" /> Github
+              </button>
+              <button className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center hover:font-bold text-xs ease-linear transition-all duration-150" type="button" >
+                <Image width={50} height={50} alt="..." className="w-5 mr-1" src="https://demos.creative-tim.com/notus-js/assets/img/google.svg" /> Google
+              </button>
 
             </div>
             <hr className="mt-6 border-b-1 border-blueGray-300" />
@@ -45,25 +45,12 @@ export default function ScreenLogin() {
                 </label>
               </div>
               <div className="text-center mt-6">
-                <button className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150" type="button"> Sign In </button>
+                <button className="bg-primary text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150" type="button"> Sign In </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <footer className="relative pt-8 pb-6 mt-2">
-        <div className="container mx-auto px-2">
-          <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-6/12 px-4 mx-auto text-center">
-              <div className="text-sm text-blueGray-500 font-semibold py-1">
-                <Link href='/marketplace/product' className="border bg-red-400 text-white rounded-lg p-6">
-                  Link to Product
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </section>
   )
 }

@@ -24,7 +24,7 @@ export default function Header() {
                 </button>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row hidden md:block -mx-2">
+            <div className="flex flex-col md:flex-row md:block">
               <a
                 href="#"
                 className="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
@@ -37,12 +37,12 @@ export default function Header() {
               >
                 About
               </a>
-              <a
-                href="#"
+              <Link
+                href="/login"
                 className="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
               >
-                Contact
-              </a>
+                Login
+              </Link>
             </div>
           </div>
         </nav>
