@@ -1,9 +1,28 @@
+'use client'
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useForm, SubmitHandler } from "react-hook-form";
+
+import CustomButton from '@/components/atoms/CustomButton';
 
 import { standarInput } from '@/utils/Tokens';
 
+type Inputs = {
+  example: string,
+  exampleTwo: string,
+};
+
 export default function ScreenLogin() {
+
+  const { 
+    register, 
+    handleSubmit, 
+    watch, formState: { errors } 
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+
   return (
     <section className="max-w-screen-sm mx-auto w-1/2">
       <div className="bg-slate-100 w-full mx-auto">
@@ -29,14 +48,14 @@ export default function ScreenLogin() {
             <div className="text-blueGray-400 text-center mb-3 font-bold">
               <small className=''>Or sign in with credentials</small>
             </div>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="relative w-full mb-3">
                 <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">Email</label>
-                <input type="email" className={`${standarInput}`} placeholder="Email" />
+                <input {...register("example")} type="email" className={`${standarInput}`} placeholder="Email" />
               </div>
               <div className="relative w-full mb-3">
                 <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">Password</label>
-                <input type="password" className={`${standarInput}`} placeholder="Password" />
+                <input {...register("exampleTwo")} type="password" className={`${standarInput}`} placeholder="Password" />
               </div>
               <div>
                 <label className="inline-flex items-center cursor-pointer">
@@ -45,7 +64,12 @@ export default function ScreenLogin() {
                 </label>
               </div>
               <div className="text-center mt-6">
-                <button className="bg-primary text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150" type="button"> Sign In </button>
+                <CustomButton 
+                  text='Log In asfd'
+                  color='bg-danger'
+                  onClickButton={() => {}}
+                  typeButton='submit'
+                />
               </div>
             </form>
           </div>

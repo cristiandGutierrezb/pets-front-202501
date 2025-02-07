@@ -22,6 +22,11 @@ export default {
           100: "#1e1e2d",
           200: "#232533",
         },
+        danger: {
+          DEFAULT: '#FA1508',
+          100: '#F94F3F',
+          200: '#FA756E'
+        },
         gray: {
           100: "#cdcd30"
         }

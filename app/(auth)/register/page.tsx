@@ -1,6 +1,26 @@
+'use client'
+
 import Image from "next/image"
+import CustomButton from '@/components/atoms/CustomButton';
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type Inputs = {
+  email: string,
+  user: string,
+  password: string,
+  confirmPassword: string,
+};
 
 export default function RegisterPage() {
+
+  const { 
+    register, 
+    handleSubmit, 
+    watch, formState: { errors } 
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+
   return (
     <section className="bg-white">
       <div className="w-full px-4 mx-auto pt-6">
@@ -16,16 +36,17 @@ export default function RegisterPage() {
             <div className="text-blueGray-400 text-center mb-3 font-bold">
               <small>Or log in with credentials</small>
             </div>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="relative w-full mb-3">
                 <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-email">Email</label><input type="email" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Email" />
               </div>
               <div className="relative w-full mb-3">
                 <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-user">User</label><input type="password" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Password" />
+                <input {...register("user")} type="email"  placeholder="Email" />
               </div>
               <div className="relative w-full mb-3">
                 <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">Password</label>
-                <input type="password" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Password" />
+                <input {...register("password")} type="password" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Password" />
               </div>
               <div className="relative w-full mb-3">
                 <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password-confirm">Confirm Password</label><input type="password" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Password" />
@@ -39,21 +60,20 @@ export default function RegisterPage() {
               <div className="text-center mt-6">
                 <button className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150" type="button"> Sign In </button>
               </div>
+
+              <div className="text-center mt-6">
+                <CustomButton 
+                  text='Register'
+                  color='bg-danger'
+                  onClickButton={() => {}}
+                  typeButton='submit'
+                />
+              </div>
             </form>
           </div>
         </div>
       </div>
-      <footer className="relative pt-8 pb-6 mt-2">
-        <div className="container mx-auto px-2">
-          <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-6/12 px-4 mx-auto text-center">
-              <div className="text-sm text-blueGray-500 font-semibold py-1">
-                Made with <a href="https://www.creative-tim.com/product/notus-js" className="text-blueGray-500 hover:text-gray-800" target="_blank">Notus JS</a> by <a href="https://www.creative-tim.com" className="text-blueGray-500 hover:text-blueGray-800" target="_blank"> Creative Tim</a>.
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+
     </section>
   )
 }
