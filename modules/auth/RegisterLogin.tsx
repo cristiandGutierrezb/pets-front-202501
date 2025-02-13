@@ -1,28 +1,26 @@
-'use client'
+import Link from "next/link";
 
-import Image from 'next/image';
-import Link from 'next/link';
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import CustomButton from '@/components/atoms/CustomButton';
 
 import { standarInput } from '@/utils/Tokens';
 
-type FormLoginInputs = {
+type FormRegisterInputs = {
+  name: string,
   email: string,
   password: string,
 };
 
-export default function ScreenLogin() {
+export default function RegisterLogin() {
 
   const { 
     register, 
     handleSubmit, 
-    watch, 
-    formState: { errors } 
-  } = useForm<FormLoginInputs>();
+    watch, formState: { errors } 
+  } = useForm<FormRegisterInputs>();
 
-  const onSubmit: SubmitHandler<FormLoginInputs> = (data) => {
+  const onSubmit: SubmitHandler<FormRegisterInputs> = (data) => {
     console.log(data)
   }
 
@@ -33,7 +31,7 @@ export default function ScreenLogin() {
           <div className="rounded-t mb-0 px-6 py-6">
             <div className="text-center mb-3">
               <h1 className="text-sm font-bold">
-                SIGN IN OR <Link href={'/register'}>Register</Link>
+                REGISTER OR <Link href={'/login'}>Login</Link>
               </h1>
             </div>
             <hr className="mt-6 border-b-1" />
