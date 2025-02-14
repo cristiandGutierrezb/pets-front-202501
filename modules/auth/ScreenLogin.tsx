@@ -3,15 +3,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+
+import { loginScheme } from '@/schemes/LoginSchema';
 
 import CustomButton from '@/components/atoms/CustomButton';
 
+import { LoginDTO } from '@/interfaces/LoginInterface';
 import { standarInput } from '@/utils/Tokens';
-
-type FormLoginInputs = {
-  email: string,
-  password: string,
-};
 
 export default function ScreenLogin() {
 
@@ -20,9 +19,11 @@ export default function ScreenLogin() {
     handleSubmit, 
     watch, 
     formState: { errors } 
-  } = useForm<FormLoginInputs>();
+  } = useForm<LoginDTO>({
+    resolver: zodResolver(loginScheme)
+  });
 
-  const onSubmit: SubmitHandler<FormLoginInputs> = (data) => {
+  const onSubmit: SubmitHandler<LoginDTO> = (data) => {
     console.log(data)
   }
 
