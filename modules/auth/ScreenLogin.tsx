@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useForm, SubmitHandler } from "react-hook-form";
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import CustomButton from '@/components/atoms/CustomButton';
 
@@ -13,6 +15,11 @@ type FormLoginInputs = {
   password: string,
 };
 
+const scheme = z.object({
+  email: z.string(),
+  password: z.string()
+})
+
 export default function ScreenLogin() {
 
   const { 
@@ -20,7 +27,9 @@ export default function ScreenLogin() {
     handleSubmit, 
     watch, 
     formState: { errors } 
-  } = useForm<FormLoginInputs>();
+  } = useForm<FormLoginInputs>({
+    resolver: zodResolver(scheme)
+  });
 
   const onSubmit: SubmitHandler<FormLoginInputs> = (data) => {
     console.log(data)
