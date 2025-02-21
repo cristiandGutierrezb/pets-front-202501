@@ -1,6 +1,10 @@
+'use client'
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from "next/navigation";
+
+import { authenticationUser } from "@/libs/api-users";
 
 import { loginScheme } from '@/schemes/LoginSchema';
 
@@ -10,8 +14,8 @@ import { LoginDTO } from '@/interfaces/LoginInterface';
 import { standarInput } from '@/utils/Tokens';
 
 export default function Form() {
-
-  const { 
+  const router = useRouter()
+  const {
     register, 
     handleSubmit, 
     watch, 
@@ -21,11 +25,15 @@ export default function Form() {
   });
 
   const onSubmit: SubmitHandler<LoginDTO> = (data) => {
-    console.log(data)
+    authenticationUser(data)
+    .then((info: any) => {
+      localStorage.setItem('token', info.token)
+      router.replace('/user/home')  
+    })
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="bg-red-200">
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="relative w-full mb-3">
         <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="email-login">Email</label>
         <input {...register("email")} type="email" className={`${standarInput}`} placeholder="Email" id='email-login' />
