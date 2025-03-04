@@ -1,6 +1,14 @@
+'use client'
 import Link from "next/link";
+import { useStore } from "../../store/ShoppingCart";
+
+import { ShoppingCartIcon } from "../atoms/ListIconst";
+
 
 export default function Header() {
+
+  const { count } = useStore()
+  
   return (
     <header className="w-full shadow-lg">
         <nav className="max-w-screen-xl mx-auto bg-white">
@@ -24,25 +32,34 @@ export default function Header() {
                 </button>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row md:block">
-              <a
+            <div className="flex flex-row">
+              <Link
                 href="#"
                 className="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
               >
                 Home
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
               >
                 About
-              </a>
+              </Link>
               <Link
                 href="/login"
                 className="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
               >
                 Login
               </Link>
+              <div className="relative">
+                <ShoppingCartIcon 
+                  color="black"
+                  size={35}
+                />
+                <span className="absolute top-0 right-0 bg-black-200 rounded-full h-5 w-5 flex justify-center items-center text-white text-[12px]">
+                  { count }
+                </span>
+              </div>
             </div>
           </div>
         </nav>

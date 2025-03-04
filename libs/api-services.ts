@@ -10,3 +10,12 @@ export const loginUser = (body: LoginDTO) => {
   }
   fetch('', headersOptions)
 }
+
+export const getListProducts = () => {
+  const headersOptions = {
+    method: 'GET'
+  }
+  return fetch('http://localhost:3333/api/v1/products', headersOptions)
+          .then(data => data.json())
+}
+
