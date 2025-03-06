@@ -2,25 +2,38 @@
 import Image from "next/image"
 import CustomButton from "../atoms/CustomButton"
 
-import { useStore } from "../../store/ShoppingCart"
+import { useShoppingCartStore } from "../../store/ShoppingCart"
+import { ProductDAO } from "@/interfaces/MarketplaceInterface"
 
-export default function CustomCart() {
+import { standarContainer } from "@/utils/Tokens"
 
-  const { inc } = useStore()
+interface CustomCartProps {
+  product: ProductDAO
+}
 
-  const onAddToCart = () => {
-    console.log('Add to Cart')
+export default function CustomCart({ product }: CustomCartProps) {
+
+  const addItem = useShoppingCartStore((state) => state.addItem)
+
+  const onAddProduct = () => {
+    addItem(product)
   }
 
   return (
-    <section>
+    <section className={`${standarContainer} flex flex-col w-60 p-5`}>
       {/* <Image src="" alt="" /> */}
-      <p>Title</p>
-      <p>Description</p>
+      <p className="font-bold">{ product.title }</p>
+      <p className="font-semibold">
+        {
+          product.description.length > 50
+            ? `${product.description.slice(0, 50)}...`
+            : product.description
+        }
+      </p>
       <CustomButton 
         text="Add to Cart"
         color="bg-primary"
-        onClickButton={inc}
+        onClickButton={onAddProduct}
       />
     </section>
   )

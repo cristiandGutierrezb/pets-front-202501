@@ -6,15 +6,13 @@ import { getListProducts } from "@/libs/api-services";
 
 import CustomButton from '@/components/atoms/CustomButton';
 
-import { ProductDAO, StandarDAO } from "@/interfaces/ProductInterface";
-
 export default function Reports() {
 
-  const [listProducts, setListProducts] = useState<ProductDAO[]>([])
+  const [listProducts, setListProducts] = useState<any[]>([])
   
   useEffect(() => {
     getListProducts()
-    .then((data: StandarDAO) => {
+    .then((data: any) => {
       console.log('data', data);
       setListProducts(data.data)
     })
