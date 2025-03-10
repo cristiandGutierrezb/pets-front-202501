@@ -1,5 +1,5 @@
 'use client'
-import Image from "next/image"
+import Link from "next/link"
 import CustomButton from "../atoms/CustomButton"
 
 import { useShoppingCartStore } from "../../store/ShoppingCart"
@@ -30,6 +30,7 @@ export default function CustomCart({ product }: CustomCartProps) {
             : product.description
         }
       </p>
+      <Link href={`/marketplace/products/${product.id_product}`}>More details...</Link>
       <CustomButton 
         text="Add to Cart"
         color="bg-primary"

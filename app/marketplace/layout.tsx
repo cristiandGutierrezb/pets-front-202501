@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Header from "@/components/molecules/Header";
 
 export default function MarketplaceLayout({

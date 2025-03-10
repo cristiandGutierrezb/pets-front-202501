@@ -11,11 +11,11 @@ export const loginUser = (body: LoginDTO) => {
   fetch('', headersOptions)
 }
 
-export const getListProducts = () => {
+export const getListProducts = async () => {
   const headersOptions = {
     method: 'GET'
   }
-  return fetch('http://localhost:3333/api/v1/products', headersOptions)
+  return await fetch('http://localhost:3333/api/v1/products', headersOptions)
           .then(data => data.json())
 }
 

@@ -1,6 +1,5 @@
 'use client'
 
-import Image from "next/image"
 import CustomButton from '@/components/atoms/CustomButton';
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -15,8 +14,7 @@ export default function RegisterPage() {
 
   const { 
     register, 
-    handleSubmit, 
-    watch, formState: { errors } 
+    handleSubmit
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
