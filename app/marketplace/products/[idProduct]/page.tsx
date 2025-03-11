@@ -22,11 +22,11 @@ export async function generateMetadata({
 }: ProductPageProps): Promise<Metadata> {
   try {
     const idProduct = (await params).idProduct
-    const { id_product, title } = await getProduct(idProduct);
+    const { id_product, title, description } = await getProduct(idProduct);
 
     return {
       title: `#${id_product} - ${title}`,
-      description: `Página del producto ${title}`,
+      description: `${description}`,
     };
   } catch {
     return {
