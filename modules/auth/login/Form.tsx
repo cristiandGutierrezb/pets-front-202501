@@ -25,11 +25,13 @@ export default function Form() {
   });
 
   const onSubmit: SubmitHandler<LoginDTO> = (data) => {
-    authenticationUser(data)
-    .then((info: any) => {
-      localStorage.setItem('token', info.token)
+    // authenticationUser(data)
+    // .then((info: any) => {
+    // })
+    setTimeout(() => {
+      localStorage.setItem('token', 'this_is_my_token')
       router.replace('/user/home')  
-    })
+    }, 2000);
   }
 
   return (

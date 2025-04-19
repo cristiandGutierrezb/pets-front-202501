@@ -1,8 +1,20 @@
+'use client'
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 import Form from './Form'
 
 export default function ScreenLogin() {
+  const router = useRouter()
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      router.push('/user/home')
+    }
+  }, [])
 
   return (
     <section className="max-w-screen-sm mx-auto w-1/2">

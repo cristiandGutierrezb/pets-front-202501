@@ -13,3 +13,15 @@ export const authenticationUser = async (body: LoginDTO) => {
   return await fetch(`${apiUrl}/user/`, headerOptions)
           .then(data => data.json())
 }
+
+export const createUser = async (body: any) => {
+  const headerOptions = {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      "Content-type": "application/json"
+    }
+  }
+  return await fetch(`${apiUrl}/user/create`, headerOptions)
+          .then(data => data.json())
+}
